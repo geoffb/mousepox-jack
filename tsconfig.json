@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "strict": true,
+    "removeComments": true,
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "lib/**/*.ts"
+  ],
+  "compileOnSave": true
+}

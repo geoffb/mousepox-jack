@@ -1,0 +1,29 @@
+{
+  "name": "@mousepox/jack",
+  "version": "0.1.0",
+  "description": "2D game engine",
+  "author": "Geoff Blair <geoff@mousepox.io>",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist-es/index.js",
+  "files": [
+    "dist",
+    "dist-es"
+  ],
+  "scripts": {
+    "build": "yarn build:cjs && yarn build:es",
+    "build:cjs": "tsc",
+    "build:es": "tsc -p tsconfig-es.json",
+    "lint": "tslint -c tslint.json 'lib/**/*.ts'",
+    "prepublish": "yarn lint && yarn build"
+  },
+  "devDependencies": {
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@mousepox/math": "^0.3.0",
+    "@mousepox/tween": "^0.2.0"
+  }
+}

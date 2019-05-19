@@ -1,5 +1,6 @@
 import { TweenGroup } from "@mousepox/tween";
-import { Actor } from "./Actor";
+import { ImageCache } from "./ImageCache";
+import { Scene } from "./Scene";
 import { Surface } from "./Surface";
 
 /** A 2D game */
@@ -8,11 +9,17 @@ export class Game {
   /** Main drawing surfadce */
   public stage: Surface;
 
-  /** Scene graph root */
-  public scene = new Actor();
+  /** Scenes */
+  public readonly scenes: Map<string, Scene> = new Map();
 
   /** Tween animations */
-  public tweens = new TweenGroup();
+  public readonly tweens = new TweenGroup();
+
+  /** Image cache */
+  public readonly images = new ImageCache();
+
+  /** Active scene */
+  private activeScene: Scene | undefined;
 
   /** Last update time */
   private updateTime = -1;
@@ -57,6 +64,25 @@ export class Game {
     this.running = false;
   }
 
+  /** Add a new scene */
+  public addScene(name: string, SceneClass: new (...args: any[]) => Scene) {
+    this.scenes.set(name, new SceneClass(
+      this.stage.width,
+      this.stage.height,
+      this.images,
+      this.tweens));
+  }
+
+  /** Activate a previously added scene */
+  public activateScene(name: string) {
+    const scene = this.scenes.get(name);
+    if (scene !== undefined) {
+      this.activeScene = scene;
+    } else {
+      throw new Error(`Invalid scene name: ${name}`);
+    }
+  }
+
   /** Update game */
   private update(time: number) {
     // Calculate delta time
@@ -86,8 +112,10 @@ export class Game {
     // Reset transformation matrix
     ctx.resetTransform();
 
-    // Render scene graph
-    this.scene.render(ctx);
+    // Render active scene
+    if (this.activeScene !== undefined) {
+      this.activeScene.render(ctx);
+    }
   }
 
   /** Fit stage canvas to current window size */

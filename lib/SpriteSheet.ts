@@ -9,10 +9,9 @@ export class SpriteSheet {
 
   private boundsCache: Map<number, IRectangle> = new Map();
 
-  constructor(url: string, size: number) {
-    this.image = new Image();
-    this.image.src = url;
+  constructor(image: HTMLImageElement, size: number) {
     this.size = size;
+    this.image = image;
   }
 
   public getSpriteBounds(index: number): IRectangle {

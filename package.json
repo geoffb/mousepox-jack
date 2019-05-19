@@ -25,5 +25,8 @@
   "dependencies": {
     "@mousepox/math": "^0.3.0",
     "@mousepox/tween": "^0.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

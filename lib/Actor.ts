@@ -24,6 +24,24 @@ export class Actor {
   /** Child actors, rendered relative to this one */
   public children: Actor[] = [];
 
+  /** Dispose of this Actor */
+  public dispose() {
+    // Remove from parent
+    if (this.parent !== null) {
+      this.parent.removeChild(this);
+    }
+
+    // Dispose children
+    this.disposeChildren();
+  }
+
+  /** Dispose of this Actor's children */
+  public disposeChildren() {
+    for (const child of this.children) {
+      child.dispose();
+    }
+  }
+
   /** Add a child actor */
   public addChild(child: Actor) {
     child.parent = this;

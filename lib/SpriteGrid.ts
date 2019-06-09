@@ -6,15 +6,33 @@ export class SpriteGrid extends Actor {
 
   public sheet: SpriteSheet;
 
-  public grid: Grid;
+  public grid?: Grid;
 
-  constructor(sheet: SpriteSheet, grid: Grid) {
+  public get width(): number {
+    if (this.grid !== undefined) {
+      return this.grid.width * this.sheet.size;
+    } else {
+      return 0;
+    }
+  }
+
+  public get height(): number {
+    if (this.grid !== undefined) {
+      return this.grid.height * this.sheet.size;
+    } else {
+      return 0;
+    }
+  }
+
+  constructor(sheet: SpriteSheet, grid?: Grid) {
     super();
     this.sheet = sheet;
     this.grid = grid;
   }
 
   protected renderSelf(ctx: CanvasRenderingContext2D) {
+    if (this.grid === undefined) { return; }
+
     const size = this.sheet.size;
     const width = this.grid.width * size;
     const height = this.grid.height * size;

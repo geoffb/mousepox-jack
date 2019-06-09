@@ -1,5 +1,7 @@
 import { TweenGroup } from "@mousepox/tween";
+import { DataCache } from "./DataCache";
 import { ImageCache } from "./ImageCache";
+import { Keyboard } from "./Keyboard";
 import { Scene } from "./Scene";
 import { Surface } from "./Surface";
 
@@ -15,8 +17,14 @@ export class Game {
   /** Tween animations */
   public readonly tweens = new TweenGroup();
 
+  /** Data cache */
+  public readonly data = new DataCache();
+
   /** Image cache */
   public readonly images = new ImageCache();
+
+  /** Keyboard */
+  public readonly keyboard = new Keyboard(document.body);
 
   /** Active scene */
   private activeScene: Scene | undefined;
@@ -65,12 +73,16 @@ export class Game {
   }
 
   /** Add a new scene */
-  public addScene(name: string, SceneClass: new (...args: any[]) => Scene) {
-    this.scenes.set(name, new SceneClass(
+  public addScene<T extends Scene>(name: string, SceneClass: new (...args: any[]) => T): T {
+    const scene = new SceneClass(
       this.stage.width,
       this.stage.height,
+      this.data,
       this.images,
-      this.tweens));
+      this.tweens,
+      this.keyboard);
+    this.scenes.set(name, scene);
+    return scene;
   }
 
   /** Activate a previously added scene */
@@ -90,6 +102,13 @@ export class Game {
     this.updateTime = time;
 
     this.onUpdateBegin();
+
+    // Update active scene
+    if (this.activeScene !== undefined) {
+      this.activeScene.update(dt);
+    }
+
+    this.keyboard.endFrame();
 
     // Update tween animations
     this.tweens.update(dt);

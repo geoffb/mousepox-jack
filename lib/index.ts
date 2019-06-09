@@ -1,5 +1,6 @@
 export * from "./Actor";
 export * from "./Box";
+export * from "./DataCache";
 export * from "./Game";
 export * from "./Grid";
 export * from "./ImageCache";

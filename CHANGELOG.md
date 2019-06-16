@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+* Add optional `frames` parameter to `Keyboard.getKeyState`
+
 ## 0.2.0
 
 * Add `Keyboard` and `DataCache` to `Game`/`Scene`

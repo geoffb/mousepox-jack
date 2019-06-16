@@ -16,10 +16,10 @@ export class Keyboard {
     this.frame++;
   }
 
-  public getKeyState(keyCode: number): boolean {
+  public getKeyState(keyCode: number, frames = 0): boolean {
     const start = this.keyTime.get(keyCode);
     if (start !== undefined) {
-      return (this.frame - start) === 0;
+      return (this.frame - start) <= frames;
     } else {
       return false;
     }

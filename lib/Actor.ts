@@ -37,8 +37,10 @@ export class Actor {
 
   /** Dispose of this Actor's children */
   public disposeChildren() {
-    for (const child of this.children) {
-      child.dispose();
+    // Loop through children in reverse order to prevent any .length issues
+    for (let i = this.children.length - 1; i >= 0; --i) {
+      this.children[i].dispose();
+      this.children.splice(i, 1);
     }
   }
 

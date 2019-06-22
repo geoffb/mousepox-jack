@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+* Fix bug in `Actor.disposeChildren()`
+
 ## 0.2.1
 
 * Add optional `frames` parameter to `Keyboard.getKeyState`

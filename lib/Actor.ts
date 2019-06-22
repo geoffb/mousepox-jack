@@ -6,6 +6,9 @@ export class Actor {
   /** Position */
   public position = new Vector2();
 
+  /** drawOrder: higher = closer to camera, lower = farther away */
+  public drawOrder = 0;
+
   /** Scale */
   public scale = new Vector2(1, 1);
 
@@ -48,6 +51,8 @@ export class Actor {
   public addChild(child: Actor) {
     child.parent = this;
     this.children.push(child);
+
+    this.sortChildren();
   }
 
   /** Remove a child actor */
@@ -96,6 +101,12 @@ export class Actor {
     }
 
     ctx.restore();
+  }
+
+  protected sortChildren(): void {
+    this.children.sort((a: Actor, b: Actor) => {
+      return a.drawOrder - b.drawOrder;
+    });
   }
 
   /** Render self */

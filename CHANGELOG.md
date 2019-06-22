@@ -2,6 +2,7 @@
 
 ## 0.2.2
 
+* Add `Actor.drawOrder`
 * Fix bug in `Actor.disposeChildren()`
 
 ## 0.2.1

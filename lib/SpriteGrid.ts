@@ -10,7 +10,7 @@ export class SpriteGrid extends Actor {
 
   public get width(): number {
     if (this.grid !== undefined) {
-      return this.grid.width * this.sheet.size;
+      return this.grid.width * this.sheet.width;
     } else {
       return 0;
     }
@@ -18,7 +18,7 @@ export class SpriteGrid extends Actor {
 
   public get height(): number {
     if (this.grid !== undefined) {
-      return this.grid.height * this.sheet.size;
+      return this.grid.height * this.sheet.height;
     } else {
       return 0;
     }
@@ -33,9 +33,8 @@ export class SpriteGrid extends Actor {
   protected renderSelf(ctx: CanvasRenderingContext2D) {
     if (this.grid === undefined) { return; }
 
-    const size = this.sheet.size;
-    const width = this.grid.width * size;
-    const height = this.grid.height * size;
+    const width = this.grid.width * this.sheet.width;
+    const height = this.grid.height * this.sheet.height;
 
     const ox = -width / 2;
     const oy = -height / 2;
@@ -43,8 +42,8 @@ export class SpriteGrid extends Actor {
     this.grid.forEach((index, x, y) => {
       const bounds = this.sheet.getSpriteBounds(index);
       ctx.drawImage(this.sheet.image,
-        bounds.x, bounds.y, size, size,
-        ox + x * size, oy + y * size, size, size);
+        bounds.x, bounds.y, this.sheet.width, this.sheet.height,
+        ox + x * this.sheet.width, oy + y * this.sheet.height, this.sheet.width, this.sheet.height);
     });
 
   }

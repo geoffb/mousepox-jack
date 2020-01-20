@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+* Add `ActionQueue`
+
 ## 0.2.2
 
 * Add `Actor.drawOrder`

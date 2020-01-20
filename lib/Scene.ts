@@ -1,4 +1,5 @@
 import { TweenGroup } from "@mousepox/tween";
+import { ActionQueue } from "./ActionQueue";
 import { Actor } from "./Actor";
 import { DataCache } from "./DataCache";
 import { ImageCache } from "./ImageCache";
@@ -22,6 +23,9 @@ export abstract class Scene extends Actor {
 
   /** Keyboard */
   protected readonly keyboard: Keyboard;
+
+  /** Action queue */
+  protected readonly actionQueue = new ActionQueue();
 
   constructor(
     width: number,

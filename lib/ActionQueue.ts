@@ -11,41 +11,54 @@ export class ActionQueue {
 
   private readonly queue: IAction[] = [];
 
-  private processing = false;
+  private processing = 0;
 
   public get busy(): boolean {
-    return this.processing;
+    return this.processing > 0;
+  }
+
+  public reset() {
+    this.queue.length = 0;
+    this.processing = 0;
   }
 
   public handle(type: number, handler: ActionHandler) {
     this.handlers.set(type, handler);
   }
 
-  public process(type: number, params: any[]) {
+  public process(type: number, params: any[], immediate = false) {
     const action = { type, params };
-    if (this.processing) {
-      this.queue.push(action);
+    if (immediate || !this.busy) {
+      this.execute(action, !immediate);
     } else {
-      this.execute(action);
+      this.queue.push(action);
     }
   }
 
-  private async execute(action: IAction) {
+  private async execute(action: IAction, block = true) {
+    // Ensure a handler is defined for this action type
     const handler = this.handlers.get(action.type);
     if (handler === undefined) {
       return;
     }
 
-    this.processing = true;
+    // When blocking, this action must finish before others can begin
+    if (block) { this.processing++; }
 
+    // Invoke action handler
     await handler(...action.params);
 
-    this.processing = false;
+    // When blocking, reduce the count of in-progress actions
+    if (block) {
+      this.processing = Math.max(this.processing - 1, 0);
+    }
 
     // Process the next item in the queue, if any
-    const next = this.queue.shift();
-    if (next !== undefined) {
-      this.execute(next);
+    if (!this.busy) {
+      const next = this.queue.shift();
+      if (next !== undefined) {
+        this.execute(next);
+      }
     }
   }
 

@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@mousepox/static-server/-/static-server-0.1.0.tgz#0d9469b12c3736f97d4faff5fca03f424c45038d"
   integrity sha512-2QCHIIOjz3RL6KycQeK0sf1MES/sqiBIyBZ6LmREOgZ4R5z1V5+fHEuQOLLlUtVa2SuSxXvt/KQ21544/0EWiQ==
 
-"@mousepox/tween@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@mousepox/tween/-/tween-0.2.0.tgz#4dc9d54bac4a9e8d934e840be4901fd0e21440d6"
-  integrity sha512-sJ0EQzJ4UDP23sda5ohe6wVi409yPtg2Hs+1+QD/Ciof7e2zvjlsiWaTfwGYCwSKG+vaDdi52k3/ChbHEEFLpw==
+"@mousepox/tween@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@mousepox/tween/-/tween-0.3.0.tgz#7ba5d7a705e85df721a337c5608b0d18cfb4c123"
+  integrity sha512-0fBVyUHbGjCUpYvbXOsJVVY6s8zEqT9Za3xWKLVbc02pGhnUR6LDVKTwde40eNJ+6hasx7DDS/nox4MabNTvCw==
 
 "@types/estree@0.0.39":
   version "0.0.39"

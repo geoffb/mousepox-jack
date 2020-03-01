@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["esnext", "dom"],
+    "lib": ["es2018", "dom"],
     "module": "commonjs",
     "strict": true,
     "removeComments": true,

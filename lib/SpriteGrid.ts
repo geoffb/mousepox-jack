@@ -1,5 +1,5 @@
+import { Grid } from "@mousepox/math";
 import { Actor } from "./Actor";
-import { Grid } from "./Grid";
 import { SpriteSheet } from "./SpriteSheet";
 
 export class SpriteGrid extends Actor {

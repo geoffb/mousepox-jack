@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+* Add `SpriteText`
+* :boom: Remove `Grid`
+
 ## 0.3.0
 
 * Add `ActionQueue`

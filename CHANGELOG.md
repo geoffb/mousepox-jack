@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+
+* Add `SpriteText.width` property
+
 ## 0.4.0
 
 * Add `SpriteText`

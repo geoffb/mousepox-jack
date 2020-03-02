@@ -19,7 +19,7 @@
     "build": "tsc && tsc -p tsconfig-es.json && chmod +x dist/cli/main.js",
     "clean": "rm -rf dist dist-es",
     "lint": "tslint -c tslint.json 'lib/**/*.ts'",
-    "prepublish": "yarn lint && yarn build"
+    "prepublish": "yarn clean && yarn lint && yarn build"
   },
   "dependencies": {
     "@mousepox/math": "^1.2.0",

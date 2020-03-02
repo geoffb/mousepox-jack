@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+
+* :bug: Fix image-rendering CSS property on pixelated `Surface` objects
+
 ## 0.4.1
 
 * Add `SpriteText.width` property

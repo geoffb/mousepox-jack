@@ -4,12 +4,24 @@ export class Keyboard {
 
   private keyTime: Map<number, number> = new Map();
 
+  private suppressed: number[] = [
+    13, 32, 37, 38, 39, 40,
+  ];
+
   private frame = 0;
 
   constructor(element: HTMLElement) {
     this.element = element;
     this.element.addEventListener("keydown", this.keyDown.bind(this));
     this.element.addEventListener("keyup", this.keyUp.bind(this));
+  }
+
+  public suppress(...keys: number[]) {
+    for (const key of keys) {
+      if (this.suppressed.indexOf(key) === -1) {
+        this.suppressed.push(key);
+      }
+    }
   }
 
   public endFrame() {
@@ -26,15 +38,19 @@ export class Keyboard {
   }
 
   private keyDown(ev: KeyboardEvent) {
-    // console.log("keydown", ev);
     if (!this.keyTime.has(ev.keyCode)) {
       this.keyTime.set(ev.keyCode, this.frame);
+    }
+    if (this.suppressed.indexOf(ev.keyCode) !== -1) {
+      ev.preventDefault();
     }
   }
 
   private keyUp(ev: KeyboardEvent) {
-    // console.log("keyup", ev);
     this.keyTime.delete(ev.keyCode);
+    if (this.suppressed.indexOf(ev.keyCode) !== -1) {
+      ev.preventDefault();
+    }
   }
 
 }

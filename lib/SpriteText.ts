@@ -68,6 +68,18 @@ export class SpriteText extends Actor {
   /** Parsed lines */
   private lines: string[] = [];
 
+  /** Returns the maximum width of all lines */
+  public get width(): number {
+    let maxWidth = 0;
+    for (const line of this.lines) {
+      const width = line.length * this.size;
+      if (width > maxWidth) {
+        maxWidth = width;
+      }
+    }
+    return maxWidth;
+  }
+
   /** The height of a single line */
   public get lineHeight(): number {
     return this.size + this.lineSpacing;

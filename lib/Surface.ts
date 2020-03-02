@@ -17,7 +17,7 @@ export class Surface {
 
   public set pixelated(value: boolean) {
     this.context.imageSmoothingEnabled = !value;
-    this.canvas.style.setProperty("image-rendering", value ? "optimizespeed" : "optimizequality");
+    this.canvas.style.setProperty("image-rendering", value ? "crisp-edges" : "auto");
   }
 
   constructor(width: number, height: number, pixelated = true) {

@@ -3,6 +3,7 @@ import { DataCache } from "./DataCache";
 import { ImageCache } from "./ImageCache";
 import { Keyboard } from "./Keyboard";
 import { Scene } from "./Scene";
+import { SoundCache } from "./SoundCache";
 import { Surface } from "./Surface";
 
 /** A 2D game */
@@ -22,6 +23,9 @@ export class Game {
 
   /** Image cache */
   public readonly images = new ImageCache();
+
+  /** Sound cache */
+  public readonly sounds = new SoundCache();
 
   /** Keyboard */
   public readonly keyboard = new Keyboard(document.body);
@@ -79,6 +83,7 @@ export class Game {
       this.stage.height,
       this.data,
       this.images,
+      this.sounds,
       this.tweens,
       this.keyboard);
     this.scenes.set(name, scene);

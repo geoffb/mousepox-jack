@@ -4,6 +4,7 @@ import { Actor } from "./Actor";
 import { DataCache } from "./DataCache";
 import { ImageCache } from "./ImageCache";
 import { Keyboard } from "./Keyboard";
+import { SoundCache } from "./SoundCache";
 
 export abstract class Scene extends Actor {
 
@@ -13,10 +14,14 @@ export abstract class Scene extends Actor {
   /** Height of scene */
   protected readonly height: number;
 
+  /** Data cache */
   protected readonly data: DataCache;
 
   /** Image cache */
   protected readonly images: ImageCache;
+
+  /** Sound cache */
+  protected readonly sounds: SoundCache;
 
   /** Tweens */
   protected readonly tweens: TweenGroup;
@@ -32,6 +37,7 @@ export abstract class Scene extends Actor {
     height: number,
     data: DataCache,
     images: ImageCache,
+    sounds: SoundCache,
     tweens: TweenGroup,
     keyboard: Keyboard,
   ) {
@@ -40,6 +46,7 @@ export abstract class Scene extends Actor {
     this.height = height;
     this.data = data;
     this.images = images;
+    this.sounds = sounds;
     this.tweens = tweens;
     this.keyboard = keyboard;
     this.init();

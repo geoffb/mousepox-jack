@@ -10,11 +10,15 @@ export class Keyboard {
 
   private frame = 0;
 
+  private firstInteract = false;
+
   constructor(element: HTMLElement) {
     this.element = element;
     this.element.addEventListener("keydown", this.keyDown.bind(this));
     this.element.addEventListener("keyup", this.keyUp.bind(this));
   }
+
+  public onFirstInteract: () => void = () => undefined;
 
   public suppress(...keys: number[]) {
     for (const key of keys) {
@@ -44,6 +48,7 @@ export class Keyboard {
     if (this.suppressed.indexOf(ev.keyCode) !== -1) {
       ev.preventDefault();
     }
+    this.triggerFirstInteract();
   }
 
   private keyUp(ev: KeyboardEvent) {
@@ -51,6 +56,13 @@ export class Keyboard {
     if (this.suppressed.indexOf(ev.keyCode) !== -1) {
       ev.preventDefault();
     }
+    this.triggerFirstInteract();
+  }
+
+  private triggerFirstInteract() {
+    if (this.firstInteract) { return; }
+    this.onFirstInteract();
+    this.firstInteract = true;
   }
 
 }

@@ -1,5 +1,1 @@
-cmd: yarn lint && yarn build
-name: Build
-targets:
-  Build-ES:
-    cmd: yarn build:es
+cmd: yarn build

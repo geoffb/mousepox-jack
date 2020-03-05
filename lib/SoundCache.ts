@@ -4,9 +4,6 @@ async function loadAudio(url: string): Promise<HTMLAudioElement> {
     const sound = new Audio(url);
     sound.addEventListener("canplaythrough", () => resolve(sound), false);
     sound.addEventListener("error", () => reject(), false);
-    // sound.onload = () => resolve(sound);
-    // sound.onerror = () => reject();
-    // sound.src = url;
   });
 }
 
@@ -52,10 +49,8 @@ export class SoundCache {
   public async load(url: string) {
     let sound = this.sounds.get(url);
     if (sound === undefined) {
-      console.debug(`SoundCache.load: ${url}`);
       sound = await loadAudio(url);
       this.sounds.set(url, sound);
-      console.debug(`Finished loading sound: ${url}`);
     }
     return sound;
   }

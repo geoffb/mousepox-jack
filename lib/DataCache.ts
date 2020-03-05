@@ -21,13 +21,12 @@ export class DataCache {
   }
 
   /** Load a batch of data */
-  public async loadBatch(urls: string[]) {
-    const data: any[] = [];
+  public loadBatch(urls: string[]) {
+    const batch: Array<Promise<any>> = [];
     for (const url of urls) {
-      const d = await this.load(url);
-      data.push(d);
+      batch.push(this.load(url));
     }
-    return data;
+    return Promise.all(batch);
   }
 
   /** Fetch a previously loaded and cached data file */

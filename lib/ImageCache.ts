@@ -25,13 +25,12 @@ export class ImageCache {
   }
 
   /** Load a batch of images */
-  public async loadBatch(urls: string[]) {
-    const images: HTMLImageElement[] = [];
+  public loadBatch(urls: string[]) {
+    const batch: Array<Promise<HTMLImageElement>> = [];
     for (const url of urls) {
-      const image = await this.load(url);
-      images.push(image);
+      batch.push(this.load(url));
     }
-    return images;
+    return Promise.all(batch);
   }
 
   /** Fetch a previously loaded and cached image */

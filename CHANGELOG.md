@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+* Add `SoundCache`
+* Add `Keyboard.onFirstInteract` event
+* Add `Keyboard.suppress` method
+
 ## 0.4.2
 
 * :bug: Fix image-rendering CSS property on pixelated `Surface` objects

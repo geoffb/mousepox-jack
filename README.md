@@ -13,6 +13,7 @@ Jack is a game engine for 2D web technology games, written in [TypeScript](https
 * Tween animation
 * Sprite fonts
 * Keyboard input
+* "Action queue" for serialized animation management
 
 ## Games Made with Jack
 

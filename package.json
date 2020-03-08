@@ -35,7 +35,7 @@
     "@types/minimist": "^1.2.0",
     "@types/node": "^12.7.2",
     "tslint": "^6.0.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "publishConfig": {
     "access": "public"

@@ -67,7 +67,7 @@ export class Actor {
   }
 
   /** Render actor (and children) */
-  public render(ctx: CanvasRenderingContext2D) {
+  public render(ctx: CanvasRenderingContext2D, dt: number) {
     // Bail out if Actor isn't visible
     if (!this.visible || this.opacity <= 0) { return; }
 
@@ -93,11 +93,11 @@ export class Actor {
     }
 
     // Render self
-    this.renderSelf(ctx);
+    this.renderSelf(ctx, dt);
 
     // Render children
     for (const child of this.children) {
-      child.render(ctx);
+      child.render(ctx, dt);
     }
 
     ctx.restore();
@@ -110,7 +110,7 @@ export class Actor {
   }
 
   /** Render self */
-  protected renderSelf(_ctx: CanvasRenderingContext2D) {
+  protected renderSelf(_ctx: CanvasRenderingContext2D, _dt: number) {
     return;
   }
 

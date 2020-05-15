@@ -119,7 +119,7 @@ export class Game {
     this.tweens.update(dt);
 
     // Render game
-    this.render();
+    this.render(dt);
 
     this.onUpdateEnd();
 
@@ -130,7 +130,7 @@ export class Game {
   }
 
   /** Render game */
-  private render() {
+  private render(dt: number) {
     const ctx = this.stage.context;
 
     // Reset transformation matrix
@@ -138,7 +138,7 @@ export class Game {
 
     // Render active scene
     if (this.activeScene !== undefined) {
-      this.activeScene.render(ctx);
+      this.activeScene.render(ctx, dt);
     }
   }
 

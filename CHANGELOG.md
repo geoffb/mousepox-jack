@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.1
+
+* Add CSS class name to `Surface` canvas element
+* :arrow_up: Update dependencies
+
 ## 0.5.0
 
 * Add `SoundCache`

@@ -23,6 +23,7 @@ export class Surface {
   constructor(width: number, height: number, pixelated = true) {
     // Initialize canvas
     this.canvas = document.createElement("canvas");
+    this.canvas.className = "jack-surface";
     this.resize(width, height);
 
     // Initialize rendering context

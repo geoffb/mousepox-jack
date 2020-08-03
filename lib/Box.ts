@@ -20,7 +20,7 @@ export class Box extends Actor {
 
   protected renderSelf(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = this.fillStyle;
-    ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+    ctx.fillRect(-Math.floor(this.width / 2), -Math.floor(this.height / 2), this.width, this.height);
   }
 
 }

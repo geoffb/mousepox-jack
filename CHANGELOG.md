@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2
+
+* :bug: Floor Box rendering coordinates
+
 ## 0.5.1
 
 * Add CSS class name to `Surface` canvas element

@@ -109,9 +109,22 @@ export class Actor {
     });
   }
 
-  /** Render self */
+  // /** Invoked before rendering has begun; override in sublass */
+  // protected renderBefore(_ctx: CanvasRenderingContext2D) {
+  //   // Do custom setup before self and children are rendered
+  //   return;
+  // }
+
+  /** Invoked when the actor should perform non-child rendering; override in subclass */
   protected renderSelf(_ctx: CanvasRenderingContext2D) {
+    // Custom rendering
     return;
   }
+
+  // /** Invoked after rendering has occurred; override in subclass */
+  // protected renderAfter(_ctx: CanvasRenderingContext2D) {
+  //   // Do custom cleanup after self and children have rendered
+  //   return;
+  // }
 
 }

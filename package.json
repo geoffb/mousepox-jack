@@ -20,9 +20,12 @@
   },
   "dependencies": {
     "@mousepox/math": "^1.2.0",
-    "@mousepox/tween": "^0.3.0"
+    "@mousepox/tween": "^0.3.0",
+    "howler": "^2.2.0"
   },
   "devDependencies": {
+    "@types/howler": "^2.2.1",
+    "@types/node": "^14.6.1",
     "tslint": "^6.0.0",
     "typescript": "^3.8.3"
   },

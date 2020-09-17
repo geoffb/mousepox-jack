@@ -94,6 +94,10 @@ export class Game {
   public activateScene(name: string) {
     const scene = this.scenes.get(name);
     if (scene !== undefined) {
+      if (this.activeScene !== undefined) {
+        this.activeScene.deactivate();
+      }
+      scene.activate();
       this.activeScene = scene;
     } else {
       throw new Error(`Invalid scene name: ${name}`);

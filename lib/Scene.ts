@@ -52,8 +52,22 @@ export abstract class Scene extends Actor {
     this.init();
   }
 
-  public abstract update(dt: number): void;
+  public activate(): void {
+    // Perform actions when this scene is activated
+    return;
+  }
 
-  protected abstract init(): void;
+  public update(_dt: number): void {
+    return;
+  }
+
+  public deactivate(): void {
+    // Perform actions when this scene is deactivated
+    return;
+  }
+
+  protected init(): void {
+    return;
+  }
 
 }

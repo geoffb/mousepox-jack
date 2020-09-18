@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0
+
+* Add `Scene.activate` method
+* Add `Box.clip` property
+* Use [howler.js](https://howlerjs.com) for audio
+* :fire: Remove unused CLI code/assets/deps
+
 ## 0.5.2
 
 * :bug: Floor Box rendering coordinates

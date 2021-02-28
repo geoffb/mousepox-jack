@@ -4,7 +4,17 @@ import { ImageCache } from "./ImageCache";
 import { Keyboard } from "./Keyboard";
 import { Scene } from "./Scene";
 import { SoundCache } from "./SoundCache";
+import { SpriteSheet } from "./SpriteSheet";
+import { ISpriteFont, SpriteText } from "./SpriteText";
 import { Surface } from "./Surface";
+
+/** Sprite font definition */
+interface ISpriteFontDefinition {
+  sheet: string;
+  width: number;
+  height: number;
+  glyphs: string;
+}
 
 /** A 2D game */
 export class Game {
@@ -63,6 +73,20 @@ export class Game {
   public onUpdateBegin = () => { return; };
 
   public onUpdateEnd = () => { return; };
+
+  /** Load a sprite font and optionally set as default */
+  public async loadSpriteFont(url: string, makeDefault = false): Promise<ISpriteFont> {
+    const config = await this.data.load(url) as ISpriteFontDefinition;
+    const image = await this.images.load(config.sheet);
+    const font: ISpriteFont = {
+      glyphs: config.glyphs,
+      sheet: new SpriteSheet(image, config.width, config.height),
+    };
+    if (makeDefault) {
+      SpriteText.DefaultFont = font;
+    }
+    return font;
+  }
 
   /** Start game */
   public start() {

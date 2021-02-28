@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+* Improve canvas scaling in Safari
+
 ## 0.6.0
 
 * Add `Scene.activate` method

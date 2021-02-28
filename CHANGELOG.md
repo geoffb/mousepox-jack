@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.2
+
+* Add `Game.loadSpriteFont`
+
 ## 0.6.1
 
 * Improve canvas scaling in Safari

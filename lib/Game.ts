@@ -162,8 +162,8 @@ export class Game {
     const top = height / 2 - (canvas.height / 2 * scale);
 
     // Apply styles
-    canvas.style.transformOrigin = "0 0";
-    canvas.style.transform = `scale(${scale}, ${scale})`;
+    canvas.style.width = `${canvas.width * scale}px`;
+    canvas.style.height = `${canvas.height * scale}px`;
     canvas.style.left = `${left}px`;
     canvas.style.top = `${top}px`;
   }

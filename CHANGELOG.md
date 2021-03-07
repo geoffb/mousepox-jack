@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.3
+
+* Add `TileMap`
+* Change `fillStyle` parameter of the `Box` constructor to be optional
+
 ## 0.6.2
 
 * Add `Game.loadSpriteFont`

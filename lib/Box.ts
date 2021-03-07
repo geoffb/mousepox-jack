@@ -9,11 +9,11 @@ export class Box extends Actor {
 
   public height: number;
 
-  public fillStyle: string;
+  public fillStyle: string | undefined;
 
   public clip: boolean;
 
-  constructor(width: number, height: number, fillStyle = "#FFFFFF", clip = false) {
+  constructor(width: number, height: number, fillStyle?: string, clip = false) {
     super();
     this.width = width;
     this.height = height;
@@ -33,8 +33,10 @@ export class Box extends Actor {
     }
 
     // Render colored rectangle
-    ctx.fillStyle = this.fillStyle;
-    ctx.fillRect(x, y, this.width, this.height);
+    if (this.fillStyle !== undefined) {
+      ctx.fillStyle = this.fillStyle;
+      ctx.fillRect(x, y, this.width, this.height);
+    }
   }
 
 }

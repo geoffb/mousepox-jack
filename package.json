@@ -19,7 +19,7 @@
     "prepublish": "yarn clean && yarn lint && yarn build"
   },
   "dependencies": {
-    "@mousepox/math": "^1.2.0",
+    "@mousepox/math": "^1.6.0",
     "@mousepox/tween": "^0.3.0",
     "howler": "^2.2.0"
   },

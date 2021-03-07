@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@mousepox/math@^1.2.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@mousepox/math/-/math-1.3.0.tgz#83fb25cab17a8111473d6aff12d02260e0f89f63"
-  integrity sha512-HOWeIt6ZhX6wdXPmFcEhqXeRaeWS5pwJpYb3krYuMx12SzgzZp2TiYBXRSd6+BKWaYAXcyXTOhb4h9wY7zmvNg==
+"@mousepox/math@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@mousepox/math/-/math-1.6.0.tgz#4bfb71384efec04c52ce0f729195eea0b882afdb"
+  integrity sha512-h/hxl9T2KMoy+0MAOQ0WrUcaVGA9/+8Rkra/2RZQ77MdOepm6Yp1u+ibInxYtHbPGsjflEQhxFF4Y1TMEcNN9g==
 
 "@mousepox/tween@^0.3.0":
   version "0.3.0"

@@ -11,3 +11,4 @@ export * from "./SpriteText";
 export * from "./SpriteGrid";
 export * from "./SpriteSheet";
 export * from "./Text";
+export * from "./TileMap";

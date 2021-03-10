@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.4
+
+* Ensure whole pixel coordinates for translation and drawing
+* Disable alpha on 2D canvas context
+
 ## 0.6.3
 
 * Add `TileMap`

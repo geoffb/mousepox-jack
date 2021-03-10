@@ -75,7 +75,9 @@ export class Actor {
 
     // Apply translation
     if (this.position.x !== 0 || this.position.y !== 0) {
-      ctx.translate(this.position.x, this.position.y);
+      ctx.translate(
+        Math.round(this.position.x),
+        Math.round(this.position.y));
     }
 
     // Apply rotations

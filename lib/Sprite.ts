@@ -20,7 +20,8 @@ export class Sprite extends Actor {
     ctx.drawImage(
       this.sheet.image,
       bounds.x, bounds.y, bounds.width, bounds.height,
-      -bounds.width / 2, -bounds.height / 2, bounds.width, bounds.height);
+      Math.round(-bounds.width / 2), Math.round(-bounds.height / 2),
+      bounds.width, bounds.height);
   }
 
 }

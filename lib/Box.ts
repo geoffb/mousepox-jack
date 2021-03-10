@@ -22,8 +22,8 @@ export class Box extends Actor {
   }
 
   protected renderSelf(ctx: CanvasRenderingContext2D) {
-    const x = -Math.floor(this.width / 2);
-    const y = -Math.floor(this.height / 2);
+    const x = -Math.round(this.width / 2);
+    const y = -Math.round(this.height / 2);
 
     // Optionally clip the rendering area
     if (this.clip) {

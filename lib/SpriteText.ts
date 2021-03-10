@@ -100,7 +100,7 @@ export class SpriteText extends Actor {
       throw new Error("A font must be specified or SpriteText.Default font must be set");
     }
     this.text = text;
-    this.size = size ?? 8;
+    this.size = Math.floor(size ?? 8);
     this.font = font ?? SpriteText.DefaultFont!;
   }
 
@@ -123,7 +123,7 @@ export class SpriteText extends Actor {
           const sprite = sheet.getSpriteBounds(index);
           ctx.drawImage(sheet.image,
             sprite.x, sprite.y, sprite.width, sprite.height,
-            x, y, this.size, this.size);
+            Math.round(x), Math.round(y), this.size, this.size);
         }
 
         // Increment render x

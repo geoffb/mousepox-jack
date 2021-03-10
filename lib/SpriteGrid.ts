@@ -42,8 +42,9 @@ export class SpriteGrid extends Actor {
     this.grid.forEach((index, x, y) => {
       const bounds = this.sheet.getSpriteBounds(index);
       ctx.drawImage(this.sheet.image,
-        bounds.x, bounds.y, this.sheet.width, this.sheet.height,
-        ox + x * this.sheet.width, oy + y * this.sheet.height, this.sheet.width, this.sheet.height);
+        bounds.x, bounds.y, bounds.width, bounds.height,
+        Math.round(ox + x * this.sheet.width), Math.round(oy + y * this.sheet.height),
+        bounds.width, bounds.height);
     });
 
   }

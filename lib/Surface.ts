@@ -27,7 +27,9 @@ export class Surface {
     this.resize(width, height);
 
     // Initialize rendering context
-    this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+    this.context = this.canvas.getContext("2d", {
+      alpha: false,
+    }) as CanvasRenderingContext2D;
 
     this.pixelated = pixelated;
   }

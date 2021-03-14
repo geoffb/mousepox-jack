@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.5
+
+* Add `Game.fadeIn` and `Game.fadeOut`
+* :arrow_up: @mousepox/math
+
 ## 0.6.4
 
 * Ensure whole pixel coordinates for translation and drawing

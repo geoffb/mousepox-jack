@@ -24,9 +24,9 @@
     js-tokens "^4.0.0"
 
 "@mousepox/math@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@mousepox/math/-/math-1.6.0.tgz#4bfb71384efec04c52ce0f729195eea0b882afdb"
-  integrity sha512-h/hxl9T2KMoy+0MAOQ0WrUcaVGA9/+8Rkra/2RZQ77MdOepm6Yp1u+ibInxYtHbPGsjflEQhxFF4Y1TMEcNN9g==
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@mousepox/math/-/math-1.6.1.tgz#834916ac6be0acc3df345f70cce2ce92270bb926"
+  integrity sha512-ljL4lGczTsziROHpp1Mf4Yn94FhciqCavEXI1bIWJugPcO5bkiKX3usMMqBYlPdMx1vxBiWzHkzYiFbgonMxkw==
 
 "@mousepox/tween@^0.3.0":
   version "0.3.0"

@@ -1,4 +1,5 @@
-import { TweenGroup } from "@mousepox/tween";
+import { Ease, TweenGroup } from "@mousepox/tween";
+import { Box } from "./Box";
 import { DataCache } from "./DataCache";
 import { ImageCache } from "./ImageCache";
 import { Keyboard } from "./Keyboard";
@@ -40,6 +41,9 @@ export class Game {
   /** Keyboard */
   public readonly keyboard = new Keyboard(document.body);
 
+  /** Colored overlay used to fade in/out */
+  private readonly overlay: Box;
+
   /** Active scene */
   private activeScene: Scene | undefined;
 
@@ -53,6 +57,10 @@ export class Game {
   private animFrameHandler: (time: number) => void;
 
   constructor(width: number, height: number) {
+    this.overlay = new Box(width, height, "#000");
+    this.overlay.position.set(width / 2, height / 2);
+    this.overlay.visible = false;
+
     // Initialize stage
     this.stage = new Surface(width, height);
     const style = this.stage.canvas.style;
@@ -128,6 +136,43 @@ export class Game {
     }
   }
 
+  public fadeIn(duration?: number, fillStyle?: string): Promise<void> {
+    if (fillStyle !== undefined) {
+      this.overlay.fillStyle = fillStyle;
+    }
+    this.overlay.visible = true;
+    if (duration !== undefined && duration > 0) {
+      this.overlay.opacity = 0;
+      return this.tweens.create(this.overlay)
+        .to({
+          opacity: 1,
+        }, duration, Ease.QuadInOut)
+        .promise();
+    } else {
+      this.overlay.opacity = 1;
+      return Promise.resolve();
+    }
+  }
+
+  public fadeOut(duration?: number, fillStyle?: string): Promise<void> {
+    if (fillStyle !== undefined) {
+      this.overlay.fillStyle = fillStyle;
+    }
+    this.overlay.visible = true;
+    if (duration !== undefined && duration > 0) {
+      this.overlay.opacity = 1;
+      return this.tweens.create(this.overlay)
+        .to({
+          opacity: 0,
+        }, duration, Ease.QuadInOut)
+        .call(() => this.overlay.visible = false)
+        .promise();
+    } else {
+      this.overlay.visible = false;
+      return Promise.resolve();
+    }
+  }
+
   /** Update game */
   private update(time: number) {
     // Calculate delta time
@@ -161,12 +206,16 @@ export class Game {
   private render() {
     const ctx = this.stage.context;
 
-    // Reset transformation matrix
-    ctx.resetTransform();
-
     // Render active scene
     if (this.activeScene !== undefined) {
+      ctx.resetTransform();
       this.activeScene.render(ctx);
+    }
+
+    // Render overlay
+    if (this.overlay.visible) {
+      ctx.resetTransform();
+      this.overlay.render(ctx);
     }
   }
 

@@ -20,7 +20,7 @@ export class Surface {
     this.canvas.style.setProperty("image-rendering", value ? "crisp-edges" : "auto");
   }
 
-  constructor(width: number, height: number, pixelated = true) {
+  constructor(width: number, height: number, pixelated = true, alpha = false) {
     // Initialize canvas
     this.canvas = document.createElement("canvas");
     this.canvas.className = "jack-surface";
@@ -28,7 +28,7 @@ export class Surface {
 
     // Initialize rendering context
     this.context = this.canvas.getContext("2d", {
-      alpha: false,
+      alpha,
     }) as CanvasRenderingContext2D;
 
     this.pixelated = pixelated;

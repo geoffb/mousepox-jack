@@ -17,6 +17,12 @@ interface ISpriteFontDefinition {
   glyphs: string;
 }
 
+/** Game options */
+export interface IGameOptions {
+  stageAlpha?: boolean;
+  stagePixel?: boolean;
+}
+
 /** A 2D game */
 export class Game {
 
@@ -56,13 +62,13 @@ export class Game {
   /** Animation callback */
   private animFrameHandler: (time: number) => void;
 
-  constructor(width: number, height: number) {
+  constructor(width: number, height: number, options?: IGameOptions) {
     this.overlay = new Box(width, height, "#000");
     this.overlay.position.set(width / 2, height / 2);
     this.overlay.visible = false;
 
     // Initialize stage
-    this.stage = new Surface(width, height);
+    this.stage = new Surface(width, height, options?.stagePixel, options?.stageAlpha);
     const style = this.stage.canvas.style;
     style.position = "absolute";
     style.left = "0";

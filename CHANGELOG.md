@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.6
+
+* Add options to `Game` constructor for stage pixelation and alpha
+
 ## 0.6.5
 
 * Add `Game.fadeIn` and `Game.fadeOut`
